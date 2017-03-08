@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		p span{
+			margin-right: 10px;
+		}
+		.dsn{
+			display: none;
+		}
+		.dsb{
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<input type="text" value=""> <button>guess</button>
+	<p><span class='warn'></span></p>
+	<div></div>
+	<script>
+		const set = new Set([1,2,3,4,2,4,6])
+		console.log(set.length)
+		for(var elem of set){
+			console.log(elem)
+		}
+		// var myImage = document.querySelector('img');
+
+		// myImage.onclick = function() {
+		//     var mySrc = myImage.getAttribute('src');
+		//     if(mySrc === 'Image.png') {
+		//       myImage.setAttribute ('src','905882717-1030000000491480_huge256.jpg');
+		//     } else {
+		//       myImage.setAttribute ('src','images/firefox-icon.png');
+		//     }
+		// }
+		// function cP(){
+		// 	var para = document.createElement('p')
+		// 	para.textContent = 'hah'
+		// 	document.body.appendChild(para)
+		// }
+		// var buttons = document.querySelectorAll('button')
+		// for(var i = 0;i<buttons.length;i++){
+		// 	buttons[i].addEventListener('click',cP)
+		// }
+		let defaultN = parseInt(Math.random() * 100)
+		let time = 0
+		let p = document.createElement('p')
+		let btn = document.querySelector('button')
+		let warnCtt = document.querySelector('.warn')
+		btn.addEventListener('click',function(){
+
+			let ctt = document.querySelector('input').value
+			ctt = Number(ctt)
+			console.log(Number.isInteger(ctt))
+			let warn = '请输入数字'
+			if(ctt != ' ' && Number.isInteger(ctt)){
+				// warnCtt.setAttribute('class','dsn')
+				guess(ctt)
+			}else{
+				// warnCtt.removeAttribute('class','dsn')
+				warnCtt.textContent = ' '
+				setTimeout(function(){
+						warnCtt.textContent = '太大了' 
+				},100)
+			}
+			
+		})
+		function guess(ctt){
+			time++
+			ctt = Number(ctt)
+			if(time <= 10 && ctt != ' '  && ctt != NaN){
+				let span = document.createElement('span')
+			   span.textContent = ctt
+			   p.appendChild(span)
+				if(ctt > defaultN){
+					warnCtt.textContent = ' '
+					setTimeout(function(){
+						warnCtt.textContent = '太大了' 
+					},100)
+					
+					return 
+				}else if(ctt<defaultN){
+					warnCtt.textContent = ' '
+					setTimeout(function(){
+						warnCtt.textContent = '太小了' 
+					},100)
+
+					return 
+				}else{
+					warnCtt.textContent = ' '
+					setTimeout(function(){
+						warnCtt.textContent = '猜对了' 
+					},100)
+					return 
+				}
+			   
+			}else{
+				btn.setAttribute('disabled','disabled')
+				alert('超过十次，游戏结束')
+				return
+			}
+		}
+		document.body.appendChild(p)
+
+	</script>
+</body>
+</html>
