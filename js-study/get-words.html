@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul>
+		
+	</ul>
+	<button onclick="checkAll()">所有</button>
+	<button onclick="Christmas()">包含Christmas</button>
+</body>
+<script>
+	let ul = document.querySelector('ul')
+	let words = ['Happy Birthday!',
+                 'Merry Christmas my love',
+                 'A happy Christmas to all the family',
+                 'You\'re all I want for Christmas',
+                 'Get well soon'];
+     words.forEach(function(v,i){
+    	let li = document.createElement('li')
+    	li.textContent = v
+    	ul.appendChild(li)
+	 })
+    function checkAll(){
+    	ul.innerHTML = ''
+    	words.forEach(function(v,i){
+	    	let li = document.createElement('li')
+	    	li.textContent = v
+	    	ul.appendChild(li)
+   		 })
+    }
+    function Christmas(){
+    	ul.innerHTML = ''
+    	words.forEach(function(v,i){
+	    	let li = document.createElement('li')
+	    	if(v.indexOf('Christmas') != -1){
+	    		li.textContent = v
+	    		ul.appendChild(li)
+    		}
+		})
+    }
+    var myData = 'Manchester,London,Liverpool,Birmingham,Leeds,Carlisle';
+    var myArray = myData.split(',');
+    var myNewString = myArray.join(',');
+</script>
+</html>

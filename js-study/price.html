@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div>
+	'Underpants:6.99'
+    'Socks:5.99'
+    'T-shirt:14.99'
+    'Trousers:31.99'
+    'Shoes:23.99';
+</div>
+	<button onclick="getTotal()">修改计算</button>
+	<button onclick="clearTotal()">清除</button>
+	<ul></ul>
+	<p></p>
+	<script>
+		var list = document.querySelector('ul');
+		var totalBox = document.querySelector(' p');
+		var totalPrice = 0
+		list.innerHTML = '';
+		totalBox.textContent = '';
+		// number 1
+		                'Underpants:6.99'
+		                'Socks:5.99'
+		                'T-shirt:14.99'
+		                'Trousers:31.99'
+		                'Shoes:23.99';
+
+		for (var i = 0; i <= 0; i++) { // number 2
+		  // number 3
+
+		  // number 4
+		  
+		  // number 5
+		  itemText = 0;
+		  
+		  var listItem = document.createElement('li');
+		  listItem.textContent = itemText;
+		  list.appendChild(listItem);
+		}
+		function getTotal() {
+			totalPrice = 0
+			list.innerHTML = '';
+			totalBox.textContent = '';
+			 var allGoods =['Underpants:6.99',
+			                'Socks:5.99',
+			                'T-shirt:14.99',
+			                'Trousers:31.99',
+			                'Shoes:23.99'] 
+
+			for (var i = 0; i < allGoods.length; i++) { 
+				var eachGood = allGoods[i].split(':')
+				var eachGoodName = eachGood[0]
+				var eachGoodPrice = Number(eachGood[1])
+				
+				totalPrice += eachGoodPrice
+
+			  itemText = 0;
+			  
+			  var listItem = document.createElement('li');
+			  listItem.textContent = eachGoodName + ' -- $' + eachGoodPrice ;
+			  list.appendChild(listItem);
+			}
+			totalBox.textContent = 'Total: $' + totalPrice.toFixed(2);
+		}
+		function clearTotal(){
+			list.innerHTML = ''
+			totalBox.textContent = ''
+		}
+		
+
+	</script>
+</body>
+</html>
